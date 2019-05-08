@@ -1,0 +1,60 @@
+<section>
+  <div class="bg"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4  mt-5">
+        <img class="img-fluid" src="https://image.tmdb.org/t/p/original{{person.profile_path}}" alt=""
+          style="width: 35rem;">
+      </div>
+      &nbsp;
+      <div class="col-12 col-md-7  mt-5   ">
+
+        <h1><strong> {{person.name}} </strong></h1>
+        <h4 class="mt-5"><strong>Biography</strong></h4>
+        <p> {{person.biography}}</p>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white">
+      <hr>
+
+      <hr class="mt-5">
+  </div>
+
+  <div class= "container">
+  <div class="row">
+      
+    <div class="col-4 mt-3 mb-5">
+      
+      <h4><strong>Facts</strong></h4>
+      
+      <div class="">
+          <p><strong>Birthday</strong></p>
+          <p>{{person.birthday}}</p>
+        </div>
+
+        <div class="">
+            <p><strong>Place of Birth</strong></p>
+            <p>{{person.place_of_birth}}</p>
+          </div>
+
+    </div>
+  <div class="col mt-3 mb-5">
+    
+    <h4><strong>Movies</strong></h4>
+    <div class="row">
+      <div class="card shadow m-3" style="width: 10rem;" *ngFor="let person of cast">
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{ person.profile_path }}" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text"><strong>{{person.name}}</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+</section>

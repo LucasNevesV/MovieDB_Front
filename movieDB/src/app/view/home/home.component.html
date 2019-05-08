@@ -1,0 +1,31 @@
+
+<div class="container mt-5">
+  <ngb-carousel *ngIf="images">
+    <ng-template ngbSlide *ngFor="let movie of movies">
+      <img src="https://image.tmdb.org/t/p/original{{ movie.backdrop_path }}" class="img-fluid" alt="Random first slide">
+      <div class="carousel-caption">
+        <h3>{{movie.title}}</h3>
+        <h5>-{{movie.release_date | date :'yyyy'}}-</h5>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+
+  <div class="mt-5">
+    <h5><strong>Popular Movies</strong></h5>
+    <hr class="style-four">
+
+    <div >
+      <a (click)="goDetail(movie)" *ngFor="let movie of movies" ><img src="https://image.tmdb.org/t/p/w185{{ movie.poster_path }}" class="rounded poster img-fluid m-3" alt=""> </a>
+      
+    </div>
+    
+    <h5><strong>Popular Movies</strong></h5>
+    <hr class="style-four">
+
+    <div >
+      <a (click)="goDetailTv(show)" *ngFor="let show of shows" ><img src="https://image.tmdb.org/t/p/w185{{ show.poster_path }}" class="rounded poster img-fluid m-3" alt=""> </a>
+      
+    </div>
+
+  </div>
+</div>
