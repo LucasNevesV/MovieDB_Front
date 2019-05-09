@@ -1,6 +1,6 @@
+import { TvModule } from './view/tv/tv.module';
 import { TvService } from './services/tv.service';
 import { PersonService } from './services/person.service';
-import { MovieComponent } from './view/movie/movie.component';
 import { MovieService } from './services/movie.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -12,15 +12,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './view/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PersonComponent } from './view/person/person.component';
-import { TvComponent } from './view/tv/tv.component';
+import { SearchComponent } from './view/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MovieComponent,
     PersonComponent,
-    TvComponent
+    SearchComponent
   ],
   imports: [
     BrowserModule,

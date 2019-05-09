@@ -15,6 +15,7 @@ export class TvComponent implements OnInit {
   show = {};
   urlb: String;
   cast = {};
+  seasonSelected: String = '';
 
   ngOnInit() {
     

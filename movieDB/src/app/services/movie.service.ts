@@ -19,6 +19,12 @@ export class MovieService extends BaseService {
     return this._httpClient.get(`${this.URL}movies/${id}`)
   }
 
+  putById(movie) {
+    console.log('foi')
+
+    return this._httpClient.put(`${this.URL}movies/update`,movie)
+  }
+
   getCast(id: String){
     return this._httpClient.get(`${this.URL}movieperson/${id}`)
   }

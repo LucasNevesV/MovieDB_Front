@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Results:</h1>
+  <div class="row" *ngIf="type == 'movies'">
+      <div class="card shadow m-3" style="width: 13rem;" *ngFor="let person of shows" (click)="goPerson(person,'movie')">
+        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{ person.poster_path }}" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text"><strong>{{person.title}}</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="type == 'tv'">
+        <div class="card shadow m-3" style="width: 13rem;" *ngFor="let person of shows" (click)="goPerson(person,'tv')">
+          <img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{ person.poster_path }}" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text"><strong>{{person.name}}</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" *ngIf="type == 'people'">
+          <div class="card shadow m-3" style="width: 13rem;" *ngFor="let person of shows" (click)="goPerson(person,'person')">
+            <img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{ person.profile_path }}" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text"><strong>{{person.name}}</strong></p>
+            </div>
+          </div>
+        </div>
+</div>

@@ -16,11 +16,45 @@
 
     </div>
   </div>
-  <div class="mt-3">
-    <hr>
+  </div>
+
+  <hr class="mt-3">
+ 
+  <div class="container">
+    <div class="row">
+  <div class="mt-3 mb-5 col-4">
+    <h4><strong>Facts</strong></h4>
+    <div class="">
+      <div class="">
+        <p><strong>Original Language</strong></p>
+        <p>{{show.original_language}}</p>
+      </div>
+
+      <div class="">
+        <p><strong>Number of Seasons</strong></p>
+        <p>{{show.number_of_seasons}}</p>
+      </div>
+
+      <div class="">
+          <p><strong>Number of Episodes</strong></p>
+          <p>{{show.number_of_episodes}}</p>
+        </div>  
+
+      <div class="">
+        <p><strong>Genres</strong></p>
+        <div class="">
+          <p class="" *ngFor="let genre of show.genres">{{genre.name}}</p>
+          
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="mt-3 col">
+
     <h4><strong>Cast</strong></h4>
     <div class="row">
-      <div class="card shadow m-3" style="width: 10rem;" *ngFor="let person of cast" (click)="goPerson(person)">
+      <div class="card shadow m-3" style="width: 9rem;" *ngFor="let person of cast" (click)="goPerson(person)">
         <img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{ person.profile_path }}" alt="Card image cap">
         <div class="card-body">
           <p class="card-text"><strong>{{person.name}}</strong></p>
@@ -28,34 +62,36 @@
       </div>
     </div>
   </div>
-  <div class="mt-3 mb-5">
-    <hr>
-    <h4><strong>Facts</strong></h4>
-    <div class="row">
-      <div class="col">
-        <p><strong>Original Language</strong></p>
-        <p>{{show.original_language}}</p>
-      </div>
-
-      <div class="col">
-        <p><strong>Number of Seasons</strong></p>
-        <p>{{show.number_of_seasons}}</p>
-      </div>
-
-      <div class="col">
-          <p><strong>Number of Episodes</strong></p>
-          <p>{{show.number_of_episodes}}</p>
-        </div>  
-
-      <div class="col">
-        <p><strong>Genres</strong></p>
-        <div class="row">
-          <p class="col-md" *ngFor="let genre of show.genres">{{genre.name}}</p>
-          
-        </div>
-      </div>
-      </div>
-    </div>
   </div>
+  
+  <hr class="m-2">
+
+  <div *ngFor="let season of show.seasons">
+  <h4 *ngIf="season.name != 'Specials'"><strong>{{season.name}}</strong></h4>
+  <div class="row my-3" *ngIf="season.name != 'Specials'">
+    <div class="col-3 ">
+        <img class="img-fluid" style="width: 12rem;" src="https://image.tmdb.org/t/p/w500{{ season.poster_path }}" alt="Card image cap">
+    </div>   
+    <div class="col">
+      <div *ngIf="season.overview != ''">
+        <p><strong>Overview</strong></p>
+      <p>{{ season.overview }}</p>
+
+      </div>
+
+      <p><strong>Number of Episodes</strong></p>
+          <p>{{season.episode_count}}</p>
+
+          <p><strong>Air Date</strong></p>
+          <p>{{season.air_date}}</p>
+
+    </div> 
+  </div>
+  </div>
+
+</div>
+
+
+
 
   </section>
