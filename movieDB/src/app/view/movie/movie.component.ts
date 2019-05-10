@@ -37,6 +37,10 @@ export class MovieComponent implements OnInit {
     this._router.navigate(['person', person.id])
   }
 
+  goEdit(movie){
+    this._router.navigate(['movie/edit', movie.id])
+  }
+
   getBackdrop(path: String) {
     this.urlb = 'linear-gradient(rgba(0,0,0,0.5), rgba(100,100,100,0.5)),url("https://image.tmdb.org/t/p/original' + path + '")';
     return this.urlb;

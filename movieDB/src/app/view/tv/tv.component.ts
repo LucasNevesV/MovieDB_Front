@@ -36,7 +36,10 @@ export class TvComponent implements OnInit {
   }
 
 
-  
+  goEdit(show){
+    this._router.navigate(['tv/edit', show.id])
+  }
+
   goPerson(person) {
     this._router.navigate(['person', person.id])
   }

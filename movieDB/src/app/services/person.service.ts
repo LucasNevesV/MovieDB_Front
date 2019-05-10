@@ -11,8 +11,8 @@ export class PersonService extends BaseService {
   }
 
 
-  getDiscover(param: String) {
-    return this._httpClient.get(`${this.URL}people?size=` + param)
+  getDiscover(param: String,page:String) {
+    return this._httpClient.get(`${this.URL}people?page=` + page + '&size=' + param)
   }
 
   getById(id: string) {
@@ -21,5 +21,14 @@ export class PersonService extends BaseService {
 
   getCast(id: String){
     return this._httpClient.get(`${this.URL}movieperson/${id}`)
+  }
+
+  getWithFilter(title: String){
+    return this._httpClient.get(`${this.URL}people/filter/?title=` + title)
+  }
+
+  putById(person) {
+
+    return this._httpClient.put(`${this.URL}people/update`,person)
   }
 }

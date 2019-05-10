@@ -9,9 +9,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   
-  { path: 'movie/:id', loadChildren: './view/movie/movie.module#MovieModule'},
+  { path: 'movie', loadChildren: './view/movie/movie.module#MovieModule'},
   { path: 'search/:type', component: SearchComponent},
-  { path: 'tv/:id', loadChildren: './view/tv/tv.module#TvModule'},
+  { path: 'tv', loadChildren: './view/tv/tv.module#TvModule'},
   { path: 'person/:id', component: PersonComponent},
   { path: 'Home', component: HomeComponent},
   { path: '', pathMatch: 'full', redirectTo: 'Home'},

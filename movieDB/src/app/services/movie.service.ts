@@ -11,8 +11,8 @@ export class MovieService extends BaseService {
   }
 
 
-  getDiscover(param: String) {
-    return this._httpClient.get(`${this.URL}movies/movies?size=` + param)
+  getDiscover(param: String,page:string) {
+    return this._httpClient.get(`${this.URL}movies/movies?page=` + page + '&size=' + param)
   }
 
   getById(id: string) {
@@ -27,5 +27,9 @@ export class MovieService extends BaseService {
 
   getCast(id: String){
     return this._httpClient.get(`${this.URL}movieperson/${id}`)
+  }
+
+  getWithFilter(title: String){
+    return this._httpClient.get(`${this.URL}/movies/filter/?title=` + title)
   }
 }

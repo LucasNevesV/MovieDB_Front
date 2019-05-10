@@ -11,8 +11,8 @@ export class TvService extends BaseService {
   }
 
 
-  getDiscover(param: String) {
-    return this._httpClient.get(`${this.URL}tvs/tvs?size=` + param)
+  getDiscover(param: String,page:string) {
+    return this._httpClient.get(`${this.URL}tvs/tvs?page=` + page + '&size=' + param)
   }
 
   getById(id: string) {
@@ -21,5 +21,14 @@ export class TvService extends BaseService {
 
   getCast(id: String){
     return this._httpClient.get(`${this.URL}movieperson/${id}`)
+  }
+
+  getWithFilter(title: String){
+    return this._httpClient.get(`${this.URL}tvs/filter/?title=` + title)
+  }
+
+  putById(show) {
+
+    return this._httpClient.put(`${this.URL}tvs/update`,show)
   }
 }

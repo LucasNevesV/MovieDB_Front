@@ -1,5 +1,14 @@
 <div class="container">
-  <h1>Results:</h1>
+  <h1 class="mt-2">Results:</h1>
+  
+  <div class="input-group my-2">
+    <input type="text" class="form-control" placeholder="Search..." #searchBar [(ngModel)]='searchValue' name='searchBar' [value]='searchValue' (keyup.enter)='performSearch($event)'>
+    <div class="input-group-append">
+      <button class="btn btn-secondary" type="button" (click)='performSearch($event)'>Button</button>
+    </div>
+  </div>
+  <ngb-pagination [collectionSize]="qtd" [maxSize]="5" [(page)]="page"(pageChange)= "changePage($event)" aria-label="Default pagination"></ngb-pagination>
+
   <div class="row" *ngIf="type == 'movies'">
       <div class="card shadow m-3" style="width: 13rem;" *ngFor="let person of shows" (click)="goPerson(person,'movie')">
         <img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{ person.poster_path }}" alt="Card image cap">
@@ -26,4 +35,5 @@
             </div>
           </div>
         </div>
+        <ngb-pagination [collectionSize]="qtd" [maxSize]="5" [(page)]="page"(pageChange)= "changePage($event)" aria-label="Default pagination"></ngb-pagination>
 </div>

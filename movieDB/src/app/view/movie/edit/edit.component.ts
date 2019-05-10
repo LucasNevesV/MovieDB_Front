@@ -1,5 +1,5 @@
 import { MovieService } from './../../../services/movie.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class EditComponent implements OnInit {
 
   constructor(private _activatedRoute: ActivatedRoute,
-    private _movieService: MovieService) { }
+    private _movieService: MovieService,private _router: Router) { }
 
   movie = {}
   date;
@@ -31,7 +31,7 @@ export class EditComponent implements OnInit {
     
   }
   
-  updateMovie(){
+  updateMovie(movie){
     this._activatedRoute.params.subscribe(params => {
     //let movie = params['movie'];
 
@@ -42,5 +42,8 @@ export class EditComponent implements OnInit {
         this.alert = true;
       })
   });
+
+  this._router.navigate(['movie', movie])
+
   }
 }

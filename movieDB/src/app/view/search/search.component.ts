@@ -12,44 +12,106 @@ import { Component, OnInit } from '@angular/core';
 export class SearchComponent implements OnInit {
 
   constructor(private _activatedRoute: ActivatedRoute,
-    private _movieService: MovieService,private _tvService: TvService,
+    private _movieService: MovieService, private _tvService: TvService,
     private _personService: PersonService, private _router: Router) { }
 
-    shows = []
+  shows = []
 
-    type:String = '';
+  type: String = '';
+  page = '1';
+  searchValue: String;
+  qtd;
 
   ngOnInit() {
     this._activatedRoute.params.subscribe(params => {
       this.type = params['type'];
+      if (this.type == 'movies') {
+        this._movieService.getDiscover('12', this.page)
+          .subscribe(response => {
+            console.log(response);
+            this.qtd = response['totalElements'];
+            this.shows = response['content'];
+          })
+      } else if (this.type == 'tv') {
+        this._tvService.getDiscover('12', this.page)
+          .subscribe(response => {
+            console.log(response);
+            this.qtd = response['totalElements'];
+            this.shows = response['content'];
+          })
+      } else if (this.type == 'people') {
+        this._personService.getDiscover('12', this.page)
+          .subscribe(response => {
+            console.log(response);
+            this.qtd = response['totalElements'];
 
-      if(this.type == 'movies'){
-        this._movieService.getDiscover('20')
-        .subscribe(response => {
-          console.log(response);
-          this.shows = response['content'];
-        })
-      }else if(this.type == 'tv'){
-        this._tvService.getDiscover('20')
-        .subscribe(response => {
-          console.log(response);
-          this.shows = response['content'];
-        })
-      }else if(this.type == 'people'){
-        this._personService.getDiscover('20')
-        .subscribe(response => {
-          console.log(response);
-          this.shows = response['content'];
-        })
+            this.shows = response['content'];
+          })
       }
 
 
     });
   }
 
-  goPerson(person, type:string) {
+  goPerson(person, type: string) {
     console.log(type)
     this._router.navigate([type, person.id])
+  }
+
+  changePage() {
+    console.log(this.page)
+    this._activatedRoute.params.subscribe(params => {
+      this.type = params['type'];
+
+      if (this.type == 'movies') {
+        this._movieService.getDiscover('12', this.page)
+          .subscribe(response => {
+            console.log(response);
+            this.shows = response['content'];
+          })
+      } else if (this.type == 'tv') {
+        this._tvService.getDiscover('12', this.page)
+          .subscribe(response => {
+            console.log(response);
+            this.shows = response['content'];
+          })
+      } else if (this.type == 'people') {
+        this._personService.getDiscover('12', this.page)
+          .subscribe(response => {
+            console.log(response);
+            this.shows = response['content'];
+          })
+      }
+
+
+    });
+  }
+
+  performSearch(title) {
+    console.log(this.type);
+    if (this.type == 'movies') {
+      this._movieService.getWithFilter(this.searchValue)
+        .subscribe(response => {
+          console.log(response);
+          this.qtd = response['totalElements'];
+          this.shows = response['content'];
+
+        })
+    }else if(this.type == 'tv'){
+      this._tvService.getWithFilter(this.searchValue)
+      .subscribe(response => {
+        console.log(response);
+        this.qtd = response['totalElements'];
+        this.shows = response['content'];
+      })
+    }else if(this.type == 'people'){
+      this._personService.getWithFilter(this.searchValue)
+      .subscribe(response => {
+        console.log(response);
+        this.qtd = response['totalElements'];
+        this.shows = response['content'];
+      })
+    }
   }
 
 }

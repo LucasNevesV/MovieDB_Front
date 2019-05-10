@@ -24,36 +24,32 @@
   </div>
 
   <div class= "container">
-  <div class="row">
+  <div class="mt-3">
       
-    <div class="col-4 mt-3 mb-5">
+    <h4><strong>Facts</strong></h4>
+    <div class="row mt-3 mb-5">
+      <div class="col">
+        <p><strong>Gender</strong></p>
+        
+        <div *ngIf="person.gender == 1">
+            <p>Female</p>
+          </div>
+        <div *ngIf="person.gender == 2">
+          <p>Male</p>
+        </div>
+      </div>
       
-      <h4><strong>Facts</strong></h4>
-      
-      <div class="">
+      <div class="col">
           <p><strong>Birthday</strong></p>
           <p>{{person.birthday}}</p>
         </div>
 
-        <div class="">
+        <div class="col">
             <p><strong>Place of Birth</strong></p>
             <p>{{person.place_of_birth}}</p>
           </div>
-
+          
     </div>
-  <div class="col mt-3 mb-5">
-    
-    <h4><strong>Movies</strong></h4>
-    <div class="row">
-      <div class="card shadow m-3" style="width: 10rem;" *ngFor="let person of cast">
-        <img class="card-img-top" src="https://image.tmdb.org/t/p/w500{{ person.profile_path }}" alt="Card image cap">
-        <div class="card-body">
-          <p class="card-text"><strong>{{person.name}}</strong></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
   </div>
 </div>
 

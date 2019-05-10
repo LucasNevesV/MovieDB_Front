@@ -13,6 +13,7 @@ import { HomeComponent } from './view/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PersonComponent } from './view/person/person.component';
 import { SearchComponent } from './view/search/search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SearchComponent } from './view/search/search.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     MovieService,

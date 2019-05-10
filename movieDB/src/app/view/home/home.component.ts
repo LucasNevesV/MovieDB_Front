@@ -22,12 +22,12 @@ export class HomeComponent implements OnInit {
   constructor(private _movieService: MovieService, private _router: Router, private _tvService: TvService) { }
 
   ngOnInit() {
-    this._movieService.getDiscover(`5`).subscribe(
+    this._movieService.getDiscover('5','4').subscribe(
       response => {
         this.movies = response['content'];
       }
     )
-    this._tvService.getDiscover(`5`).subscribe(
+    this._tvService.getDiscover('5','1').subscribe(
       response => {
         this.shows = response['content'];
       }
